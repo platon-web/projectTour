@@ -17,11 +17,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       background-color: #f4f4f4;
-      height:100%;
-      width: 100%;
     }
 
     header {
@@ -35,6 +31,7 @@
       background-color: #444;
       padding: 10px;
       text-align: center;
+    
     }
 
     input {
@@ -97,11 +94,15 @@
     .btn:hover {
       background-color: #3498db;
     }
+    .buttons{
+      margin: 10px;
+      justify-content: space-between;
+    }
   </style>
 </head>
 
 <body class="antialiased">
-  <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+  
     @if (Route::has('login'))
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
       @auth

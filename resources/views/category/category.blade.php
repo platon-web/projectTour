@@ -69,11 +69,41 @@
     .styled-button:hover::before {
       left: 0;
     }
-    
+
+    .styled-button-back{
+      display: flex;
+      justify-content: center;
+      padding: 15px 30px;
+      font-size: 16px;
+      border-radius: 20px;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      margin:10px;
+      overflow: hidden;
+      position: relative;
+}
+    .styled-button-back::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 100%;
+      height: 100%;
+      background-color: #fff;
+      transition: left 0.3s ease;
+    }
+
+    .styled-button-back:hover::before {
+      left: 0;
+    }
     </style>
 </head>
 <body>
-
+<a href="{{ route('dashboard') }}" class="styled-button-back">Back</a>
 <a href="{{route('category.create')}}" class="styled-button" >create category </a>
 
   
