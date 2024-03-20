@@ -13,7 +13,7 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-     $tours = Tour::all();
+      $tours = Tour::all();
       return view('welcome', ['tours' => $tours]);
     }
 

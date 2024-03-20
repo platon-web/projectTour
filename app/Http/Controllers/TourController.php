@@ -40,7 +40,7 @@ class TourController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tour $tour)
+    public function show(string $id)
     {
         $tour = Tour::find($id);
         return view('tour/show', ['tour' => $tour]);
@@ -49,7 +49,7 @@ class TourController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tour $tour)
+    public function edit(string $id)
     {
         $tour = Tour::find($id);
         return view('tour/edit', ['tour' => $tour]);
@@ -58,7 +58,7 @@ class TourController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tour $tour)
+    public function update(Request $request, string $id)
     {
        $data = request()->validate([
            'name' => 'required|string|max:255',
@@ -71,7 +71,7 @@ class TourController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tour $tour)
+    public function destroy(string $id)
     {
        $tour = Tour::find($id);
        $tour->delete();
