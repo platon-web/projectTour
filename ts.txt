@@ -1,0 +1,76 @@
+1) назва -  туристична агенція
+
+  1) амін панель для менеджера
+  2) сторінка вітальна для замовлення туру
+
+2) функціонал:
+    1) фронт
+       а) список турів як вигляд новити чи блог 
+       https://tourbest.com.ua/?gclid=CjwKCAiA98WrBhAYEiwA2WvhOrFHbNZr20vy7T43yCKwFCOXHkxASJS_4lyBXBw-P344GX3Jwpy7GhoCuPoQAvD_BwE  
+
+       б) форма для замовлення 
+           контактна інфа (тел, піп, емаїл,,,)
+           сам тур (з його id) 
+           дні на коли (календар)
+           кількість людей
+           вартість туру
+       в) будь який дизайн (можна здерти з іншого сайту)    
+
+    2) адмін
+       а) бачити всі зроблені замовлення по туру
+          - могти відредагувати (відмінити, одобрити)   
+
+        б) форма для створення туру (ціна на коли опис)
+          - список всіх турів і їх редагувати (crud)
+
+        в) список користувачів (менеджерів)  (crud)
+
+
+*****************************************************************************
+
+   код
+
+   бд - таблиці
+    - users (вже є)
+    - orders (створюємо)  
+       поля - id, тел, піп, емаїл, тур_id, дні, ціна 
+    - tours (створюємо)
+        id, name, price, status,
+
+
+   cmv - 
+     -  UserController    crud
+     -   OrderController    crud
+     -   TourController    crud
+     -   WelcomeController  form
+
+        - Order  model
+        - Tour  model
+
+        -order route
+        -welcome route
+        -tour route
+        -user route
+
+        
+        -order view (папка)
+           create
+           show
+           edit
+           order
+        -welcome view (папка)
+           create
+           show
+           edit
+           home
+        -tour view (папка)
+           create
+           show
+           edit
+           tour
+
+        -user view (папка)
+           create
+           show
+           edit
+           user
