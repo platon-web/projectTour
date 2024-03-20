@@ -63,7 +63,7 @@
 </head>
 
 <body>
-    <a class="left" href="{{ route('tour.show') }}">Back</a>
+    <a class="left" href="{{ route('tour.index') }}">Back</a>
     <h1>Show Tour</h1>
     <table>
         <thead>
@@ -82,7 +82,8 @@
             </tr>
         </tbody>
     </table>
-    <p><img src="{{ $tour->image }}" alt="{{ $tour->name }}"></p>
+    <p><img src="{{ asset('/storage/' . $tour->image) }}" alt="{{ $tour->name }}"
+            style="width: 500px; height: 300px;"></p>
 </body>
 
 </html>

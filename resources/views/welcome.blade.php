@@ -20,6 +20,8 @@
       margin: 0;
       padding: 0;
       background-color: #f4f4f4;
+      height:100%;
+      width: 100%;
     }
 
     header {
@@ -99,8 +101,7 @@
 </head>
 
 <body class="antialiased">
-  <div
-    class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+  <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
     @if (Route::has('login'))
     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
       @auth
@@ -115,18 +116,22 @@
     </div>
     @endif
 
-    <form action="{{ route('welcome.store') }}" method="post">
+    <form action="{{ route('welcome.store') }}" method="POST">
       @csrf
       <header>
         <h1>Туристичне агентство</h1>
       </header>
       <nav>
-        <input type="tel" name="phone" placeholder="Telphone number">
-        <input type="sno" name="sno" placeholder="Full name">
-        <input type="email" placeholder="Email">
-        <input type="tour" name="tour" placeholder="Name of tour">
+        <input type="text" name="telephone" placeholder="Telphone number">
+        <input type="text" name="pip" placeholder="Full name">
+        <input type="email" name = 'email' placeholder="Email">
+        <input type="number" name="tour_id" placeholder="Tour ID">
+        <input type="number" name="count_day" placeholder="Days">
+        <input type="number" name="price" placeholder="Price">
         <input type="submit" name="tourbtn" value="Submit">
       </nav>
+
+
       <div class="buttons">
         <button>
           <a class="btn" href="/login">Log in</a>
@@ -145,15 +150,14 @@
           <img src="{{ asset('/storage/' . $tour->image) }}" alt="{{ $tour->name }}">
           <h3>{{$tour->name}}</h3>
           <p>{{$tour->short_description}}. Тривалість: {{$tour->count_days}} днів. Ціна: {{$tour->price}} $</p>
-          <button onclick="location.href='{{ route('tour.show', 1) }}'" type="button">Детальніше</button>
+          <button onclick="location.href='{{ route('welcom.show', $tour->id) }}'" type="button">Детальніше</button>
         </div>          
         @endforeach
 
 
+        </div>
       </div>
-    </form>
-  </div>
-
+      </form>
 </body>
 
 </html>

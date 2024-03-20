@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Tour;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Order;
 class WelcomeController extends Controller
 {
     /**
@@ -30,14 +31,17 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
-        // $data = request()->validate([
-        //     'name' => 'required|string|max:255',
-        //     'price' => 'required|string|max:255',
-        //     'short_description' => 'required|string|max:255',
-        //     'description' => 'required|string|max:500',
-        //     'count_days' => 'required|integer',
-        // ])
+        $data = request()->validate([
+            'telephone' => 'required|string|max:225',
+            'pip' => 'required|string|max:225',
+            'email' => 'required|string|max:225',
+            'tour_id' => 'required|numeric',
+            'count_day' => 'required|numeric',
+            'price' => 'required|numeric',
+        ]);
 
+        Order::create($data);
+        return view('welcome', ['tours' => Tour::All()]);
     }
 
     /**
@@ -67,7 +71,7 @@ class WelcomeController extends Controller
             'name' => 'required|string|max:255',
         ]);
         Welcome::where('id', $id)->update($data);
-        $Welcome=Tour::all($data);
+        $tour=Tour::all($data);
         return view('tour/tour', ['tours'=>$tour]);
     }
 

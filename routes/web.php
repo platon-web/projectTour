@@ -117,6 +117,8 @@ Route::group(['middleware' => 'guest'], function () {
 		->name('welcome.store'); // ->name() = as, nickname, то есть чтобы не писать весь путь в form action (welcome.blade.php) можно написать просто {{ route('welcome.store') }}
 	Route::get('/welcome/category', [WelcomeController::class, 'showCategory'])
 		->name("welcome.showCategory");
+
+	Route::get('/welcome/category{id}', [WelcomeController::class, 'show']) -> name('welcom.show');
 	Route::get('/welcome/post', [WelcomeController::class, 'showPost'])
 		->name("welcome.showPost");
 });
