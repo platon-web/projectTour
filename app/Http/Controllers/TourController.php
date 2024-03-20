@@ -83,10 +83,17 @@ class TourController extends Controller
         'image' => 'required|file|image|mimes:jpg,png,jpeg',
        ]);
 
-       dd("123");
+       if ($request->hasFile('image')) {
+        $file = $request->file('image');
+        
+        $path = $file->store('images','public');
+
+        $data['image'] = $path;
+       }
+
        Tour::where('id', $id)->update($data);
        $tour=Tour::all();
-       return view('welcome', ['tours'=>$tour]);
+       return view('tour/tour', ['tours'=>$tour]);
     }
 
     /**

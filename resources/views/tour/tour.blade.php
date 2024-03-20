@@ -69,7 +69,11 @@
     .styled-button:hover::before {
       left: 0;
     }
-
+    .button-th {
+display:flex;
+justify-content: right;
+box-shadow: 0px 0px 4xp 0px rgba(0,0,0,0.5);
+    }
     </style>
 </head>
 <body>
@@ -78,21 +82,26 @@
 
 <table>
     <thead>
-        <th>Tour</th>
-        <th>Tour img</th>
         <th>Tour Name</th>
+        <th>Tour img</th>
         <th>Tour count_day</th>
         <th>Tour Price</th>
+        <th class="button-th">Buttons</th>
     </thead>
 
     <tbody>
         @foreach ($tours as $tour)
             <tr>
-                <td>{{$tour->id}}</td>
-                <td>{{$tour->img}}</td>
                 <td>{{$tour->name}}</td>
+                <td>                      
+                  @if($tour->image)
+                      <img src="{{ asset('/storage/' . $tour->image)}}" style="width: 100px; height: 80px" >
+                  @else
+                        <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" style="width: 100px;">
+                  @endif
+                </td>
                 <td>{{$tour->count_day}}</td>
-                <td>{{$tour->price}}</td>
+                <td>{{$tour->price}} $</td>
                 <td><a href="{{route('tour.show', $tour->id)}}" class="styled-button">Show</a></td>
                 <td><a href="{{route('tour.edit', $tour->id)}}" class="styled-button">Edit</a></td>
                 <td>

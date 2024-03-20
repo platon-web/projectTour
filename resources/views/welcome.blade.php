@@ -142,11 +142,9 @@
 
         @foreach($tours as $tour)
         <div class="tour">
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"
-            alt="Париж">
+          <img src="{{ asset('/storage/' . $tour->image) }}" alt="{{ $tour->name }}">
           <h3>{{$tour->name}}</h3>
-          <p>Опис туру до Парижу. Тривалість: {{$tour->count_days}} днів. Ціна: {{$tour->price}}</p>
+          <p>{{$tour->short_description}}. Тривалість: {{$tour->count_days}} днів. Ціна: {{$tour->price}} $</p>
           <button onclick="location.href='{{ route('tour.show', 1) }}'" type="button">Детальніше</button>
         </div>          
         @endforeach
