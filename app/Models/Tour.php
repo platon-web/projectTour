@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tour extends Model
 {
-    use HasFactory;
+    protected $table = 'tours';
+
+    protected $fillable = [
+        'name',
+        'price',
+        'short_description',
+        'desciption',
+        'count_day',
+    ];
+
+
 }

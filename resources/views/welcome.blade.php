@@ -139,63 +139,20 @@
         </button>
       </div>
       <div class="tour-container">
+
+        @foreach($tours as $tour)
         <div class="tour">
           <img
             src="https://upload.wikimedia.org/wikipedia/commons/4/4b/La_Tour_Eiffel_vue_de_la_Tour_Saint-Jacques%2C_Paris_ao%C3%BBt_2014_%282%29.jpg"
             alt="Париж">
-          <h3>Париж</h3>
-          <p>Опис туру до Парижу. Тривалість: 5 днів. Ціна: $1000</p>
+          <h3>{{$tour->name}}</h3>
+          <p>Опис туру до Парижу. Тривалість: {{$tour->count_days}} днів. Ціна: {{$tour->price}}</p>
           <button onclick="location.href='{{ route('tour.show', 1) }}'" type="button">Детальніше</button>
-        </div>
-
-        <div class="tour">
-          <img
-            src="https://assets.editorial.aetnd.com/uploads/2019/03/topic-london-gettyimages-760251843-feature.jpg?width=1920&height=960&crop=1920%3A960%2Csmart&quality=75&auto=webp"
-            alt="Лондон">
-          <h3>Лондон</h3>
-          <p>Опис туру до Лондону. Тривалість: 7 днів. Ціна: $1200</p>
-          <button onclick="location.href='{{ route('tour.show', 2) }}'" type="button">Детальніше</button>
-        </div>
-
-        <div class="tour">
-          <img src="https://media.timeout.com/images/105212586/750/422/image.webp" alt="Рим">
-          <h3>Рим</h3>
-          <p>Опис туру до Риму. Тривалість: 6 днів. Ціна: $1100</p>
-          <button onclick="location.href='{{ route('tour.show', 3) }}'" type="button">Детальніше</button>
-        </div>
-
-        <div class="tour">
-          <img src="https://facts.net/wp-content/uploads/2023/07/36-facts-about-kyiv-kiev-1688180108.jpeg" alt="Київ">
-          <h3>Київ</h3>
-          <p>Опис туру до Києва. Тривалість: 3 дні. Ціна: $800</p>
-          <button onclick="location.href='{{ route('tour.show', 4) }}'" type="button">Детальніше</button>
-        </div>
-
-        <div class="tour">
-          <img
-            src="https://www.moyaeuropa.com.ua/wp-content/uploads/Berlin-%D0%91%D0%B5%D1%80%D0%BB%D1%96%D0%BD-%D0%B2%D0%B5%D1%87%D1%96%D1%80%D0%BD%D1%94-%D0%BC%D1%96%D1%81%D1%82%D0%BE-1024x693.jpg"
-            alt="Берлін">
-          <h3>Берлін</h3>
-          <p>Опис туру до Берліна. Тривалість: 4 дні. Ціна: $900</p>
-          <button onclick="location.href='{{ route('tour.show', 5) }}'" type="button">Детальніше</button>
-        </div>
-        <div class="tour">
-          <img src="https://media.nomadicmatt.com/2023/madriditinerary.jpeg" alt="Madrid">
-          <h3>Мадрід</h3>
-          <p>Опис туру до Мадрід. Тривалість: 9 дні. Ціна: $1400</p>
-          <button onclick="location.href='{{ route('tour.show', 6) }}'" type="button">Детальніше</button>
-        </div>
+        </div>          
+        @endforeach
 
 
       </div>
-      @foreach($tours as $tour)
-      <div class="tour">
-        <img src="https://media.nomadicmatt.com/2023/madriditinerary.jpeg" alt="Madrid">
-        <h3>{{$tour->name}}</h3>
-        <p>{{$tour->short_description}} Ціна:{{$tour->price}}</p>
-        <button><a href="{{route('tour.show', $tour->id)}}" type="button">Детальніше</a></button>
-      </div>
-      @endforeach
     </form>
   </div>
 

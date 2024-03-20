@@ -22,7 +22,7 @@ class WelcomeController extends Controller
      */
     public function create(Request $request)
     {
-      
+      return view('welcome/create');
     }
 
     /**
@@ -30,7 +30,13 @@ class WelcomeController extends Controller
      */
     public function store(Request $request)
     {
-
+        // $data = request()->validate([
+        //     'name' => 'required|string|max:255',
+        //     'price' => 'required|string|max:255',
+        //     'short_description' => 'required|string|max:255',
+        //     'description' => 'required|string|max:500',
+        //     'count_days' => 'required|integer',
+        // ])
 
     }
 
@@ -39,15 +45,17 @@ class WelcomeController extends Controller
      */
     public function show(string $id)
     {
+        $welcome = Tour::find($id);
         return view('welcome/show', ['tour' => Tour::find($id)]);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified resource
      */
     public function edit(string $id)
     {
-        //
+        $welcome = Tour::find($id);
+        return view('tour/edit', ['tour' => $welcome]);
     }
 
     /**
@@ -55,7 +63,12 @@ class WelcomeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = request()->validate([
+            'name' => 'required|string|max:255',
+        ]);
+        Welcome::where('id', $id)->update($data);
+        $Welcome=Tour::all($data);
+        return view('tour/tour', ['tours'=>$tour]);
     }
 
     /**
@@ -63,7 +76,10 @@ class WelcomeController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $welcome = Tour::find($id);
+        $welcome->delete();
+        $welcome=Tour::all();
+        return view('tour/tour', ['tours'=>$tours]);
     }
     // public function category()
     // {

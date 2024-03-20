@@ -28,13 +28,26 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
-       $data = request()->validate([
+        $data = request()->validate([
            'name' => 'required|string|max:255',
-           'description' => 'required|string|max:255',
-           'image' => 'required|image',
-           'price' => 'required|numeric',
+           'price' => 'required|integer',
+           'short_description' => 'required|string|max:255',
+           'description' => 'required|string|max:500',
+           'image_path' => 'required|file|image|mimes:jpg,png,jpeg',
            'count_days' => 'required|integer',
-       ])
+        ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            
+            $path = $file->store('images','public');
+
+            $data['image'] = $path;
+        }
+
+        Tour::create($data);
+
+        return view('tour/tour', ['tours' => Tour::All()]);
     }
 
     /**
