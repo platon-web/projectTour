@@ -78,7 +78,7 @@ class WelcomeController extends Controller
     {
         $welcome = Tour::find($id);
         $welcome->delete();
-        $welcome=Tour::all();
+        $tours=Tour::all();
         return view('tour/tour', ['tours'=>$tours]);
     }
     // public function category()

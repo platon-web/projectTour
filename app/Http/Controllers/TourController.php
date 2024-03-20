@@ -20,7 +20,7 @@ class TourController extends Controller
      */
     public function create()
     {
-    return view('tour/create');
+       return view('tour/create');
     }
 
     /**
@@ -28,15 +28,16 @@ class TourController extends Controller
      */
     public function store(Request $request)
     {
+      //   dd('test');
         $data = request()->validate([
-           'name' => 'required|string|max:255',
-           'price' => 'required|integer',
-           'short_description' => 'required|string|max:255',
-           'description' => 'required|string|max:500',
-           'image_path' => 'required|file|image|mimes:jpg,png,jpeg',
-           'count_days' => 'required|integer',
+        'name' => 'required|string|max:225',
+        'price' => 'required|numeric', 
+        'count_day' => 'required|numeric',   
+        'short_description' => 'required|string|max:225',   
+        'description' => 'required|string|max:500',
+        'image' => 'required|file|image|mimes:jpg,png,jpeg',   
         ]);
-
+ 
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             
@@ -46,7 +47,7 @@ class TourController extends Controller
         }
 
         Tour::create($data);
-
+      
         return view('tour/tour', ['tours' => Tour::All()]);
     }
 
@@ -74,11 +75,18 @@ class TourController extends Controller
     public function update(Request $request, string $id)
     {
        $data = request()->validate([
-           'name' => 'required|string|max:255',
+        'name' => 'required|string|max:225',  
+        'price' => 'required|integer', 
+        'count_day' => 'required|integer', 
+        'short_description' => 'required|string|max:225',
+        'description' => 'required|string|max:225',
+        'image' => 'required|file|image|mimes:jpg,png,jpeg',
        ]);
+
+       dd("123");
        Tour::where('id', $id)->update($data);
-       $tour=Tour::all($data);
-       return view('tour/tour', ['tours'=>$tour]);
+       $tour=Tour::all();
+       return view('welcome', ['tours'=>$tour]);
     }
 
     /**
@@ -86,9 +94,7 @@ class TourController extends Controller
      */
     public function destroy(string $id)
     {
-       $tour = Tour::find($id);
-       $tour->delete();
-       $tours=Tour::all();
-       return view('tour/tour', ['tours'=>$tours]);
+       Tour::find($id)->delete();
+       return view('tour/tour', ['tours'=>Tour::all()]);
     }
 }

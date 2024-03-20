@@ -81,7 +81,6 @@
         <th>Tour</th>
         <th>Tour img</th>
         <th>Tour Name</th>
-        <th>Tour tour_id</th>
         <th>Tour count_day</th>
         <th>Tour Price</th>
     </thead>
@@ -92,7 +91,6 @@
                 <td>{{$tour->id}}</td>
                 <td>{{$tour->img}}</td>
                 <td>{{$tour->name}}</td>
-                <td>{{$tour->tour_id}}</td>
                 <td>{{$tour->count_day}}</td>
                 <td>{{$tour->price}}</td>
                 <td><a href="{{route('tour.show', $tour->id)}}" class="styled-button">Show</a></td>

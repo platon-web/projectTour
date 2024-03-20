@@ -11,11 +11,11 @@ class Tour extends Model
 
     protected $fillable = [
         'name',
-        'price',
+        'price', 
+        'count_day',
         'short_description',
         'desciption',
-        'count_day',
+        'image',
     ];
-
 
 }
