@@ -113,18 +113,18 @@
         <tbody>
             <tr>
                 <td>
-                    <p>Name: {{ $tour->name ?? 'none' }}</p>
+                    <p>Name: {{ $tour->name}}</p>
                 </td>
                 <td>
-                    <p>Description: {{ $tour->description ?? 'none' }}</p>
+                    <p>Description: {{ $tour->description}}</p>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <p>Price: ${{ $tour->price ?? 'none'}}</p>
+                    <p>Price: ${{ $tour->price}}</p>
                 </td>
                 <td>
-                    <p>Days: {{ $tour->days ?? 'none'}} days</p>
+                    <p>Days: {{ $tour->days}} days</p>
                 </td>
             </tr>
         </tbody>
